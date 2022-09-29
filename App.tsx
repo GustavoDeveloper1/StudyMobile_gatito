@@ -1,10 +1,15 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+
+import { StyleSheet } from 'react-native';
+import 'intl';
+import 'intl/locale-data/jsonp/pt-BR';
+
 import Servicos from './src/telas/Servicos';
+import Carrinho from './src/telas/Carrinho';
 
 export default function App() {
   return (
-    <Servicos />
+    // <Servicos />
+    <Carrinho/>
   );
 }
 

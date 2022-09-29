@@ -1,10 +1,10 @@
 import React from "react";
-import { Text, SafeAreaView, StatusBar, FlatList } from "react-native";
+import { FlatList } from "react-native";
+import TelaPadrao from "../../Components/TelaPadrao";
 import Item from "./item";
 
-
-
 export default function Servicos() {
+
     const services = [
         {
             id: 1,
@@ -23,14 +23,23 @@ export default function Servicos() {
             nome: "Vacina Antirrábica",
             preco: 109.90,
             descricao: "UMA DOSE DA VACINA POR ANO SEU GATO ESTA SALVO!"
-        }
+        },
+
     ]
 
-    return <SafeAreaView>
-        <StatusBar />
-        <FlatList
-            data={services}
-            keyExtractor={({ id }) => String(id)}
-            renderItem={({ item }: any) => <Item id={item.id} nome={item.nome} preco={item.preco} descricao={item.descricao} />} />
-    </SafeAreaView>
+    return (
+
+        <TelaPadrao>
+            <FlatList
+                data={services}
+                keyExtractor={({ id }) => String(id)}
+                renderItem={({ item }: any) =>
+                    <Item id={item.id}
+                        nome={item.nome}
+                        preco={item.preco}
+                        descricao={item.descricao}
+                        quantidade={item.quantidade} />} />
+        </TelaPadrao>
+    )
+
 }

@@ -1,12 +1,11 @@
-import React from "react";
-import { Text, TouchableOpacity } from "react-native";
+import React from 'react';
 
-import estilos from "./estilos";
+import { TouchableOpacity, Text } from 'react-native';
+import funcaoEstilosPadrao from './estilos';
 
-export default function Botao({ valor, acao }: any) {
-    return (
-        <TouchableOpacity onPress={acao} style={estilos.botao}>
-            <Text style={estilos.valor}>{valor}</Text>
-        </TouchableOpacity>
-    )
+export default function Botao({ pequeno = false, invertido = false, valor, acao, estilos }: any) {
+    const estilosPadrao = funcaoEstilosPadrao(pequeno, invertido);
+    return <TouchableOpacity onPress={acao} style={[estilosPadrao.botao, estilos]}>
+        <Text style={estilosPadrao.valor}>{valor}</Text>
+    </TouchableOpacity>
 }

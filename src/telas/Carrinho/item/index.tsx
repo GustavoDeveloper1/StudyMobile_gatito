@@ -1,16 +1,16 @@
 import React, { useState } from "react";
-import { Text, TouchableOpacity, View } from "react-native";
+import { Text, View } from "react-native";
 import Botao from "../../../Components/Botao/Index";
 import CampoInteiro from "../../../Components/CampoInteiro";
 import { ServicesTypes } from "../../../utils/Servicos";
 import { Style } from "./style";
 
 
-export default function Item({ id, nome, preco, descricao }: ServicesTypes) {
+export default function Item({ id, nome, preco, descricao, quantidade: quantidadeInicial }: ServicesTypes) {
 
-    const [quantidade, setQuantidade] = useState(1);
-    const [total, setTotal] = useState(preco);
-    const [expandir, setExpandir] = useState(false);
+    const [quantidade, setQuantidade] = useState(quantidadeInicial);
+    const [total, setTotal] = useState(preco * quantidadeInicial);
+
 
 
     const atualizaQtdandTotal = (novaQtd: any) => {
@@ -22,20 +22,15 @@ export default function Item({ id, nome, preco, descricao }: ServicesTypes) {
         setTotal(novaQtd * preco);
     };
 
-    const inverterExpandir = () => {
-        setExpandir(!expandir);
-
-        atualizaQtdandTotal(1)
-    }
 
     return (
         <>
-            <TouchableOpacity style={Style.informacao} onPress={inverterExpandir}>
+            <View style={Style.informacao} >
                 <Text style={Style.nome}>{nome}</Text>
                 <Text style={Style.descricao}>{descricao}</Text>
                 <Text style={Style.preco}>{Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(preco)}</Text>
-            </TouchableOpacity>
-            {expandir && <View style={Style.carrinho}>
+            </View>
+            <View style={Style.carrinho}>
                 <View>
                     <View style={Style.valor}>
                         <Text style={Style.descricao}>Quantidade:</Text>
@@ -48,8 +43,8 @@ export default function Item({ id, nome, preco, descricao }: ServicesTypes) {
 
                     </View>
                 </View>
-                <Botao valor="Adicionar ao Carrinho" />
-            </View>}
+                <Botao valor="Remover do Carrinho" />
+            </View>
             <View style={Style.divisor}>
 
             </View>
