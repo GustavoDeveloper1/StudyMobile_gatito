@@ -29,7 +29,7 @@ export default function Servicos() {
 
     return (
 
-        <TelaPadrao>
+        <>
             <FlatList
                 data={services}
                 keyExtractor={({ id }) => String(id)}
@@ -39,7 +39,7 @@ export default function Servicos() {
                         preco={item.preco}
                         descricao={item.descricao}
                         quantidade={item.quantidade} />} />
-        </TelaPadrao>
+        </>
     )
 
 }

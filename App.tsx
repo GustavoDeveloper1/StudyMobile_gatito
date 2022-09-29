@@ -2,14 +2,11 @@
 import { StyleSheet } from 'react-native';
 import 'intl';
 import 'intl/locale-data/jsonp/pt-BR';
-
-import Servicos from './src/telas/Servicos';
-import Carrinho from './src/telas/Carrinho';
+import Rotas from './src/Routes';
 
 export default function App() {
   return (
-    // <Servicos />
-    <Carrinho/>
+    <Rotas/>
   );
 }
 
