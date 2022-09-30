@@ -35,7 +35,7 @@ export default function Carrinho() {
 
     const total = services.reduce((soma: any, { preco, quantidade }: any) => soma + (preco * quantidade), 0)
     return (
-        < >
+        <TelaPadrao>
             <StatusCarrinho total={total} />
             <FlatList data={services}
                 keyExtractor={({ id }) => String(id)}
@@ -44,7 +44,7 @@ export default function Carrinho() {
                     preco={item.preco}
                     descricao={item.descricao}
                     quantidade={item.quantidade} />} />
-        </>
+        </TelaPadrao>
     )
 
 }
